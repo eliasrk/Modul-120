@@ -1,0 +1,18 @@
+nav {
+    width: 100%;
+    background-color: blue;
+    left: 0px;
+    bottom: 0px;
+    position: fixed;
+
+}
+
+body {
+    background-color: red;
+
+}
+
+html,
+body {
+    height: 100%;
+}
