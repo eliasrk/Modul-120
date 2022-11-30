@@ -1,7 +1,6 @@
-var currentdate = new Date();
-var datetime = "Last Sync: " + currentdate.getDate() + "/"
-    + (currentdate.getMonth() + 1) + "/"
-    + currentdate.getFullYear() + " @ "
-    + currentdate.getHours() + ":"
-    + currentdate.getMinutes() + ":"
-    + currentdate.getSeconds();
+function updateClock() {
+    let time = new Date().toLocaleString();
+    document.getElementById('time').innerHTML = time;
+}
+
+setInterval(updateClock, 1000);
