@@ -1,10 +1,35 @@
+:root {
+    /* General Colors*/
+    --accent: #6CACD9;
+    --main: #CCE2F2;
+    /* Buttons Colors*/
+    --button: #3D9DD9;
+    --active: #5383A6;
+    --dark: #2D4759;
+    /* Buttons Shadows*/
+    --shadow: 5px 5px 10px #5c92b8,
+        -5px -5px 10px #7cc6fa;
+    --shadowActive: inset 17px 17px 37px #5486a9,
+        inset -17px -17px 37px #84d2ff;
+    --shadowbackground: linear-gradient(145deg, #619bc3, #74b8e8);
+
+    /* Stop Colors*/
+    --stopMain: #D9201A;
+    /* Stop Shadows*/
+    --stopshadow: inset 24px 24px 48px #b21a15,
+        inset -24px -24px 48px #ff261f;
+
+}
+
+
+
 * {
     font-family: 'Roboto';
 }
 
 nav {
     width: 100%;
-    background-color: rgb(209 213 219);
+    background-color: var(--accent);
     left: 0px;
     bottom: 0px;
     position: fixed;
@@ -14,7 +39,7 @@ nav {
 }
 
 body {
-    background-color: red;
+    background-color: var(--main);
 
 }
 
@@ -24,38 +49,46 @@ body {
 }
 
 #time {
-    background-color: white;
     position: flex-start;
     margin-right: auto;
     text-align: center;
     border-radius: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .stop {
-    background-color: rgb(220 38 38);
+    background-color: var(--stopMain);
     color: white;
     margin-right: 0px;
     padding-left: 5px;
     padding-right: 5px;
     margin: 5px;
     border-radius: 15px;
+    box-shadow: var(--shadow);
 }
 
 .stop:active {
-    background-color: rgb(127 29 29);
+    box-shadow: var(--stopshadow);
+    color: gray;
 }
 
 .lang {
-    background: rgb(156 163 175);
+    background: var(--button);
     text-align: center;
     padding-left: 5px;
     padding-right: 5px;
     margin: 5px;
     border-radius: 15px;
+    box-shadow: var(--shadow);
 }
 
 .lang:active {
-    background-color: rgb(75 85 99);
+    background-color: var(--active);
     transition-timing-function: ease-in-out;
-    color: white;
+    color: #5b5b5b;
+    background: var(--shadowbackground);
+    box-shadow: var(--shadowActive);
 }
