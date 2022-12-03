@@ -1,0 +1,13 @@
+table{
+    background: gray;
+    margin: auto;
+    
+}
+tr{
+background: darkgray;
+}
+
+table:hover{
+    background: #000;
+    transform: scale(2);
+}
