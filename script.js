@@ -5,7 +5,7 @@ function updateClock() {
 
 setInterval(updateClock, 1000);
 
-function myFunction() {
+function rotate() {
   var element = document.getElementById("leftRight");
-  element.classList.toggle("rotate");
+  element.classList.toggle("rot");
 }

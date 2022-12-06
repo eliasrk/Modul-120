@@ -1,119 +1,114 @@
 :root {
-    /* General Colors*/
-    --accent: #6CACD9;
-    --main: #CCE2F2;
-    /* Buttons Colors*/
-    --button: #3D9DD9;
-    --active: #5383A6;
-    --dark: #2D4759;
-    /* Buttons Shadows*/
-    --shadow: 5px 5px 10px #5c92b8,
-        -5px -5px 10px #7cc6fa;
-    --shadowActive: inset 17px 17px 37px #5486a9,
-        inset -17px -17px 37px #84d2ff;
-    --shadowbackground: linear-gradient(145deg, #619bc3, #74b8e8);
+  /* General Colors*/
+  --accent: #6cacd9;
+  --main: #cce2f2;
+  /* Buttons Colors*/
+  --button: #3d9dd9;
+  --active: #5383a6;
+  --dark: #2d4759;
+  /* Buttons Shadows*/
+  --shadow: 5px 5px 10px #5c92b8, -5px -5px 10px #7cc6fa;
+  --shadowActive: inset 17px 17px 37px #5486a9, inset -17px -17px 37px #84d2ff;
+  --shadowbackground: linear-gradient(145deg, #619bc3, #74b8e8);
 
-    --mainShadow: 5px 5px 10px #adc0ce,
-            -5px -5px 10px #ebffff;
-
-    /* Stop Colors*/
-    --stopMain: #D9201A;
-    /* Stop Shadows*/
-    --stopshadow: inset 24px 24px 48px #b21a15,
-        inset -24px -24px 48px #ff261f;
-
+  --mainShadow: 5px 5px 10px #adc0ce, -5px -5px 10px #ebffff;
+  /* Stop Colors*/
+  --stopMain: #d9201a;
+  /* Stop Shadows*/
+  --stopshadow: inset 24px 24px 48px #b21a15, inset -24px -24px 48px #ff261f;
 }
 
-
-
 * {
-    font-family: 'Roboto';
+  font-family: "Roboto";
 }
 
 nav {
-    width: 100%;
-    background-color: var(--accent);
-    left: 0px;
-    bottom: 0px;
-    position: fixed;
-    display: flex;
-    justify-content: flex-end;
-
+  width: 100%;
+  background-color: var(--accent);
+  left: 0px;
+  bottom: 0px;
+  position: fixed;
+  display: flex;
+  justify-content: flex-end;
 }
 
 body {
-    background-color: var(--main);
-
+  background-color: var(--main);
 }
 
 html,
 body {
-    height: 100%;
-    overflow: hidden;
+  height: 100%;
+  overflow: hidden;
 }
 
 #time {
-    position: flex-start;
-    margin-right: auto;
-    text-align: center;
-    border-radius: 15px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+  position: flex-start;
+  margin-right: auto;
+  text-align: center;
+  border-radius: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .stop {
-    background-color: var(--stopMain);
-    color: white;
-    margin-right: 0px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin: 10px;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
+  background-color: var(--stopMain);
+  color: white;
+  margin-right: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
 }
 
 .stop:active {
-    box-shadow: var(--stopshadow);
-    color: gray;
+  box-shadow: var(--stopshadow);
+  color: gray;
 }
 
 .lang {
-    background: var(--button);
-    text-align: center;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin: 10px;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
+  background: var(--button);
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
 }
 
 .lang:active {
-    background-color: var(--active);
-    transition-timing-function: ease-in-out;
-    color: #5b5b5b;
-    background: var(--shadowbackground);
-    box-shadow: var(--shadowActive);
+  background-color: var(--active);
+  transition-timing-function: ease-in-out;
+  color: #5b5b5b;
+  background: var(--shadowbackground);
+  box-shadow: var(--shadowActive);
 }
-#location{
-    width: 50%;
-    display: flex;
-    height: 75vh;
-    border-style: solid;
-    border-color: black;
-    border-width: 2px;
-    margin: 25px;
-    border-radius: 25px;
-    background: #CCE2F2;
-        box-shadow: var(--mainShadow);
-        padding: 25px;
-    
+#location {
+  width: 50%;
+  display: flex;
+  height: 75vh;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  margin: 25px;
+  border-radius: 25px;
+  background: #cce2f2;
+  box-shadow: var(--mainShadow);
+  padding: 25px;
 }
-.main{
-    display: flex;
+.main {
+  display: flex;
 }
-
-.rot{
-rotate: 18deg;
+#leftRight {
+  transition-timing-function: ease-in-out;
+  transition-duration: 300ms;
+}
+.rot {
+  transition-timing-function: ease-in-out;
+  transition-duration: 300ms;
+  -webkit-transform: scaleX(-1);
+  transition-timing-function: ease-in-out;
 }
