@@ -4,11 +4,24 @@ function updateClock() {
 }
 
 setInterval(updateClock, 1000);
-
 function rotate() {
   var element = document.getElementById("leftRight");
-
   element.classList.toggle("rot");
+  voninner = document.getElementById("von").innerText;
+  nachinner = document.getElementById("nach").innerText;
+
+  if (voninner != "Von" && nachinner == "Nach") {
+    document.getElementById("von").innerText = "Von";
+    nachinner = document.getElementById("von").innerText;
+  }
+  if (nachinner != "Nach" && voninner == "Von") {
+    document.getElementById("nach").innerText = "Nach";
+    voninner = document.getElementById("nach").innerText;
+  }
+  if (nachinner != "Nach" && voninner != "Von") {
+    document.getElementById("von").innerText = nachinner;
+    document.getElementById("nach").innerText = voninner;
+  }
 }
 const villages = [
   { name: "Schwarzenburg" },
@@ -27,16 +40,15 @@ const villages = [
   { name: "Broc-Village" },
 ];
 
-let von = "";
 createStops("locationLeft", "von", von);
 
 let state = false;
 // creating all the cities
-function createStops(locat, id, toFrom) {
+function createStops(currentSide, id, toFrom) {
   for (var i = 0; i < villages.length; i++) {
     //create buttons for each city
-    let location = document.getElementById(locat);
-    let btn = document.createElement("button");
+    var location = document.getElementById(currentSide);
+    var btn = document.createElement("button");
     //append the halt if it exists
     if (villages[i].halt) {
       var stopping = "<h4>" + villages[i].halt + "</h4>";
@@ -50,20 +62,42 @@ function createStops(locat, id, toFrom) {
     location.append(btn);
     //check if clicked then set value of address
     btn.addEventListener("click", function () {
-      // Output the button's value to the console
+      // Output the button's value to the 1
       toFrom = this.value;
-      let cities = document.getElementById(id);
+      var cities = document.getElementById(id);
       cities.innerText = toFrom;
-      console.log(id);
       if (id == "von") {
-        document.getElementById("locationLeft").remove();
-        let nach = "";
+        document.getElementById(currentSide).innerHTML =
+          "<h1 id='von'></h1><div id=" + currentSide + "></div>";
         createStops("locationRight", "nach", nach);
+
+        var element = document.getElementById("locationRight");
+        element.classList.remove("newcity");
+        newcreateStops(currentSide);
       } else {
-        document.getElementById("locationRight").remove();
+        document.getElementById(currentSide).innerHTML =
+          "<h1 id='von'></h1><div id=" + currentSide + "></div>";
+
+        var element = document.getElementById("locationLeft");
+        element.classList.remove("newcity");
+        newcreateStops(currentSide);
       }
-      state != state;
-      rotate();
     });
   }
+}
+
+function newcreateStops(currentSide, id, toFrom) {
+  var location = document.getElementById(currentSide);
+  var button = document.createElement("button");
+  button.innerText = "ahjs";
+  button.id = "city";
+  button.className = "newcity";
+  location.append(button);
+  button.addEventListener("click", function () {
+    var element = document.getElementById(currentSide);
+    element.classList.remove("newcity");
+    document.getElementById(currentSide).innerHTML =
+      "<h1 id='von'></h1><div id=" + currentSide + "></div>";
+    createStops(currentSide, id, toFrom);
+  });
 }
