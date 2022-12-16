@@ -16,6 +16,13 @@
   --stopMain: #d9201a;
   /* Stop Shadows*/
   --stopshadow: inset 24px 24px 48px #b21a15, inset -24px -24px 48px #ff261f;
+  @font-face {
+    font-family: Graviola;
+    src: url(Graviola.otf);
+  }
+}
+* {
+  font-family: Graviola;
 }
 
 nav {
@@ -139,4 +146,30 @@ body {
 #city h3,
 h4 {
   margin: 1px;
+}
+
+#oneway {
+  width: fit-content;
+
+  background: var(--button);
+  box-shadow: var(--mainShadow);
+  border-radius: 15px;
+  border-width: 0px;
+
+  margin-bottom: 4%;
+  padding: 10px;
+}
+#onewaybutton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 150px;
+  gap: 30px;
+}
+#oneway:active {
+  background-color: var(--active);
+  transition-timing-function: ease-in-out;
+  color: #5b5b5b;
+  background: var(--shadowbackground);
+  box-shadow: var(--shadowActive);
 }

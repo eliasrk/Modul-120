@@ -19,8 +19,8 @@ const villages = [
   { name: "Broc-Fabrique" },
   { name: "Broc-Village" },
 ];
-
 setInterval(updateClock, 1000);
+
 function cleardiv() {
   document.getElementById("locationRight").innerHTML = "";
   document.getElementById("locationLeft").innerHTML = "";
@@ -84,6 +84,7 @@ function createStops(currentSide, id) {
         cleardiv();
         reselectLocation("locationLeft");
         reselectLocation("locationRight");
+        createOneWayTwoMulti();
         console.log("	1");
       } else {
         cleardiv();
@@ -97,7 +98,7 @@ function createStops(currentSide, id) {
 
 function reselectLocation(currentSide) {
   document.getElementsByClassName("newcity").innerHTML = " ";
-  var location = document.getElementById(currentSide);
+  let location = document.getElementById(currentSide);
   var button = document.createElement("button");
   button.innerText = "from";
   button.id = "city";
@@ -120,7 +121,24 @@ function reselectLocation(currentSide) {
 
 //create 3 buttons for one way return and multi
 function createOneWayTwoMulti() {
-  let location = document.getElementById("main");
+  var value = ["oneWay", "return", "multi"];
+  for (var i = 0; i < 3; i++) {
+    let location = document.getElementById("onewaybutton");
+    var oneWay = document.createElement("button");
+
+    oneWay.innerText = value[i];
+    oneWay.id = "oneway";
+    oneWay.value = value[i];
+    location.append(oneWay);
+
+    oneWay.addEventListener("click", function () {
+      var direction = this.value;
+      window.location.href = "basket.html";
+      document.cookie = "";
+      document.cookie = "direction=" + direction;
+      return direction;
+    });
+  }
 }
 
 createStops("locationLeft", "von");
