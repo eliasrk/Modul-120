@@ -31,17 +31,30 @@ function rotate() {
   if (from != "Von" && to == "Nach") {
     document.getElementById("von").innerText = "Von";
     to = document.getElementById("von").innerText;
+    document.getElementById("locationRight").innerHTML = " ";
+    document.getElementById("locationLeft").innerHTML = " ";
+    createStops("locationLeft", "von");
+    reselectLocation("locationRight");
   }
   if (to != "Nach" && from == "Von") {
     document.getElementById("nach").innerText = "Nach";
     from = document.getElementById("nach").innerText;
+    document.getElementById("locationRight").innerHTML = " ";
+    document.getElementById("locationLeft").innerHTML = " ";
+
+    reselectLocation("locationLeft");
+    reselectLocation("locationRight");
   }
   if (to != "Nach" && from != "Von") {
     document.getElementById("von").innerText = to;
     document.getElementById("nach").innerText = from;
+    document.getElementById("locationRight").innerHTML = " ";
+    document.getElementById("locationLeft").innerHTML = " ";
+
+    reselectLocation("locationLeft");
+    reselectLocation("locationRight");
   }
 }
-var nav = true;
 // creating all the cities
 function createStops(currentSide, id) {
   for (var i = 0; i < villages.length; i++) {
@@ -62,29 +75,21 @@ function createStops(currentSide, id) {
     btn.innerHTML = "<h3>" + villages[i].name + "</h3>" + stopping;
     btn.id = "city";
     btn.value = villages[i].name;
-    document.getElementsByClassName("newcity").innerHTML = " ";
     location.append(btn);
-
-    let cities = document.getElementById(id);
     //check if clicked then set value of address
     btn.addEventListener("click", function () {
       // Output the button's value to the 1
-      cities.innerText = this.value;
-      if (nav === false) {
-        document.getElementById("locationRight").innerHTML = "";
-        nav = false;
+      document.getElementById(id).innerText = this.value;
+      if (id === "nach") {
+        document.getElementById("locationRight").innerHTML = " ";
+        document.getElementById("locationLeft").innerHTML = " ";
         createStops("locationLeft", "von");
         reselectLocation("locationRight");
-        nav = true;
-        return console.log("hello1");
       } else {
-        document.getElementById("locationLeft").innerHTML = "";
-        nav = true;
+        document.getElementById("locationRight").innerHTML = " ";
+        document.getElementById("locationLeft").innerHTML = " ";
         createStops("locationRight", "nach");
         reselectLocation("locationLeft");
-        nav = true;
-        console.log(document.getElementsByClassName("newcity"));
-        console.log("hellos2");
       }
     });
   }
@@ -99,20 +104,16 @@ function reselectLocation(currentSide) {
   button.className = "newcity";
   location.append(button);
   button.addEventListener("click", function () {
-    document.getElementById(currentSide).innerHTML = "";
-    if (nav === false) {
-      document.getElementById("locationRight").innerHTML = "";
-      nav = false;
-      createStops("locationRight", "nach");
+    if (currentSide === "locationRight") {
+      document.getElementById("locationRight").innerHTML = " ";
+      document.getElementById("locationLeft").innerHTML = " ";
+      reselectLocation("locationRight");
       reselectLocation("locationLeft");
-      console.log("hellos3");
-      nav = true;
     } else {
-      document.getElementById("locationLeft").innerHTML = "";
-      nav = true;
+      document.getElementById("locationRight").innerHTML = " ";
+      document.getElementById("locationLeft").innerHTML = " ";
       createStops("locationLeft", "von");
       reselectLocation("locationRight");
-      console.log("hellos4");
     }
   });
 }
