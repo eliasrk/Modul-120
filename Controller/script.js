@@ -21,7 +21,10 @@ const villages = [
 ];
 
 setInterval(updateClock, 1000);
-
+function cleardiv() {
+  document.getElementById("locationRight").innerHTML = "";
+  document.getElementById("locationLeft").innerHTML = "";
+}
 function rotate() {
   var element = document.getElementById("leftRight");
   element.classList.toggle("rot");
@@ -31,16 +34,14 @@ function rotate() {
   if (from != "Von" && to == "Nach") {
     document.getElementById("von").innerText = "Von";
     to = document.getElementById("von").innerText;
-    document.getElementById("locationRight").innerHTML = " ";
-    document.getElementById("locationLeft").innerHTML = " ";
+    cleardiv();
     createStops("locationLeft", "von");
     reselectLocation("locationRight");
   }
   if (to != "Nach" && from == "Von") {
     document.getElementById("nach").innerText = "Nach";
     from = document.getElementById("nach").innerText;
-    document.getElementById("locationRight").innerHTML = " ";
-    document.getElementById("locationLeft").innerHTML = " ";
+    cleardiv();
 
     reselectLocation("locationLeft");
     reselectLocation("locationRight");
@@ -48,8 +49,7 @@ function rotate() {
   if (to != "Nach" && from != "Von") {
     document.getElementById("von").innerText = to;
     document.getElementById("nach").innerText = from;
-    document.getElementById("locationRight").innerHTML = " ";
-    document.getElementById("locationLeft").innerHTML = " ";
+    cleardiv();
 
     reselectLocation("locationLeft");
     reselectLocation("locationRight");
@@ -81,15 +81,15 @@ function createStops(currentSide, id) {
       // Output the button's value to the 1
       document.getElementById(id).innerText = this.value;
       if (id === "nach") {
-        document.getElementById("locationRight").innerHTML = " ";
-        document.getElementById("locationLeft").innerHTML = " ";
-        createStops("locationLeft", "von");
+        cleardiv();
+        reselectLocation("locationLeft");
         reselectLocation("locationRight");
+        console.log("	1");
       } else {
-        document.getElementById("locationRight").innerHTML = " ";
-        document.getElementById("locationLeft").innerHTML = " ";
+        cleardiv();
         createStops("locationRight", "nach");
         reselectLocation("locationLeft");
+        console.log("	2");
       }
     });
   }
@@ -105,17 +105,22 @@ function reselectLocation(currentSide) {
   location.append(button);
   button.addEventListener("click", function () {
     if (currentSide === "locationRight") {
-      document.getElementById("locationRight").innerHTML = " ";
-      document.getElementById("locationLeft").innerHTML = " ";
-      reselectLocation("locationRight");
+      cleardiv();
+      createStops("locationRight", "nach");
       reselectLocation("locationLeft");
+      console.log("  3");
     } else {
-      document.getElementById("locationRight").innerHTML = " ";
-      document.getElementById("locationLeft").innerHTML = " ";
+      cleardiv();
       createStops("locationLeft", "von");
       reselectLocation("locationRight");
+      console.log("  4");
     }
   });
+}
+
+//create 3 buttons for one way return and multi
+function createOneWayTwoMulti() {
+  let location = document.getElementById("main");
 }
 
 createStops("locationLeft", "von");
