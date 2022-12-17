@@ -19,12 +19,14 @@ const villages = [
   { name: "Broc-Fabrique" },
   { name: "Broc-Village" },
 ];
+
 setInterval(updateClock, 1000);
 
 function cleardiv() {
   document.getElementById("locationRight").innerHTML = "";
   document.getElementById("locationLeft").innerHTML = "";
 }
+//rotate button that swaps to and from names
 function rotate() {
   var element = document.getElementById("leftRight");
   element.classList.toggle("rot");
@@ -55,6 +57,7 @@ function rotate() {
     reselectLocation("locationRight");
   }
 }
+
 // creating all the cities
 function createStops(currentSide, id) {
   for (var i = 0; i < villages.length; i++) {
@@ -133,10 +136,10 @@ function createOneWayTwoMulti() {
 
     oneWay.addEventListener("click", function () {
       var direction = this.value;
+      localStorage.removeItem("direction");
+      localStorage.setItem("direction", direction);
+      localStorage.setItem("von", "1");
       window.location.href = "basket.html";
-      document.cookie = "";
-      document.cookie = "direction=" + direction;
-      return direction;
     });
   }
 }
