@@ -56,7 +56,7 @@ body {
   margin-bottom: 5px;
 }
 
-.stop {
+#stop {
   background-color: var(--stopMain);
   color: white;
   margin-right: 0px;

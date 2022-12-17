@@ -83,5 +83,14 @@ document.getElementById("Purchase").addEventListener("click", function () {
   }
   console.log("Erste klasse Anzahl=" + fullpricecount);
   console.log("Zweite klasse Anzahl=" + halfcount);
+  console.log("total=" + document.getElementById("total").innerText);
   console.log("----------------------------------");
+});
+
+//get the button with id of Stop and add event listener
+var stop = document.getElementById("Stop");
+console.log(stop);
+stop.addEventListener("click", function () {
+  window.location.href = "index.html";
+  localStorage.clear();
 });
