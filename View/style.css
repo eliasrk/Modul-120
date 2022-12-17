@@ -173,3 +173,85 @@ h4 {
   background: var(--shadowbackground);
   box-shadow: var(--shadowActive);
 }
+
+#firstClass,
+#secondClass {
+  width: fit-content;
+  padding: 25px;
+  gap: 25px;
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 25px;
+  background: #cce2f2;
+  box-shadow: var(--mainShadow);
+  padding: 25px;
+  height: fit-content;
+}
+
+#firstClass button,
+#secondClass button {
+  height: fit-content;
+  align-self: center;
+}
+
+#firstname,
+#secondname {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#price {
+  right: 5px;
+  bottom: 100px;
+  position: absolute;
+  padding: 25px;
+  gap: 25px;
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 25px;
+  background: #cce2f2;
+  box-shadow: var(--mainShadow);
+  padding: 25px;
+  height: fit-content;
+}
+
+#ticketamount {
+  display: flex;
+  width: fit-content;
+  flex-direction: column;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 25px;
+  padding: 1%;
+  gap: 25px;
+  padding: 25px;
+}
+
+.button {
+  background: var(--button);
+  box-shadow: var(--mainShadow);
+  border-radius: 25px;
+  border-width: 0px;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.button:active {
+  background-color: var(--active);
+  transition-timing-function: ease-in-out;
+  color: #5b5b5b;
+  background: var(--shadowbackground);
+  box-shadow: var(--shadowActive);
+}

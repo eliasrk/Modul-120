@@ -6,9 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="../Controller/basket.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+<nav>
+    <div class="Stop">
+        <h1>STOP</h1>
+    </div>
+    <div id="time">
+        <h1 id="clock"></h1>
+    </div>
+    <div class="Lang">
+        <h1>English</h1>
+    </div>
+    <div class="Lang">
+        <h1>German</h1>
+    </div>
+    <div class="Lang">
+        <h1>French</h1>
+    </div>
+</nav>
 
 <body>
+    <div id="ticketamount">
+        <div id="firstClass">
+            <button id="first-" class="button">-</button>
+            <div id="firstname">
+                <h1>first Class tickets </h1>
+
+                <h1 id="first">: 0</h1>
+            </div>
+            <button id="first+" class="button">+</button>
+        </div>
+        <div id="secondClass">
+            <button id="second-" class="button">-</button>
+            <div id="secondname">
+                <h1>Second Class tickets</h1>
+                <h1 id="second">: 0</h1>
+            </div>
+            <button id="second+" class="button">+</button>
+        </div>
+    </div>
+    <div id="price">
+        <h1>Total Price</h1>
+        <h2></h2>
+    </div>
 </body>
 
 </html>
