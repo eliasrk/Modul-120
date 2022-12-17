@@ -176,9 +176,10 @@ h4 {
 
 #fullpriceClass,
 #halfClass {
-  width: fit-content;
+  min-width: 85%;
   padding: 25px;
   gap: 25px;
+  justify-content: space-between;
   display: flex;
   flex-direction: row;
   border-style: solid;
@@ -190,7 +191,6 @@ h4 {
   padding: 25px;
   height: fit-content;
 }
-
 #fullpriceClass button,
 #halfClass button {
   height: fit-content;
@@ -204,6 +204,7 @@ h4 {
 }
 
 #price {
+  height: 80%;
   right: 10px;
   bottom: 100px;
   position: absolute;
@@ -218,7 +219,7 @@ h4 {
   background: #cce2f2;
   box-shadow: var(--mainShadow);
   padding: 25px;
-  height: fit-content;
+
   text-align: right;
 }
 
@@ -266,6 +267,21 @@ h4 {
   flex-direction: row;
   justify-content: space-between;
   padding: 10px;
+  gap: 25px;
+  text-align: center;
+  align-content: center;
+}
+
+#center {
+  text-align: center;
+}
+
+#purchase {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
   gap: 25px;
   text-align: center;
   align-content: center;

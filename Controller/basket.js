@@ -1,5 +1,4 @@
 var direction = localStorage.getItem("direction");
-localStorage.getItem("von");
 
 var fullpriceminus = document.getElementById("fullprice-");
 var fullpriceplus = document.getElementById("fullprice+");
@@ -46,16 +45,41 @@ halfplus.addEventListener("click", function () {
   pricecalc();
 });
 function pricecalc() {
-  console.log(fullpricecount);
+  var difference = localStorage.getItem("difference");
+  if (difference > 3) {
+    difference = difference * 0.9;
+
+    difference.toFixed(1);
+  }
   var price = 0.0;
   var price2 = 0.0;
   price = 2.9 * fullpricecount * direction;
-  price2 = 2.9 * halfcount * direction;
+  if (price > 0) {
+    price = price + difference;
+  }
+  price = Math.round(price * 100) / 100;
+
+  price2 = 1.45 * halfcount * direction;
+  if (price2 > 0) {
+    price2 = price2 + difference;
+  }
+  price2 = Math.round(price2 * 100) / 100;
   var price3 = price + price2;
-  price = price.toFixed(2);
-  price2 = price2.toFixed(2);
+
   document.getElementById("fullTotal").innerText = price;
   document.getElementById("halfTotal").innerText = price2;
-  console.log("direction " + direction);
-  document.getElementById("total").innerText = price3.toFixed(2);
+  document.getElementById("total").innerText = parseFloat(price3).toFixed(2);
 }
+
+document.getElementById("Purchase").addEventListener("click", function () {
+  console.log("----------------------------------");
+  console.log("Purchase");
+  console.log("Von=" + localStorage.getItem("von"));
+  console.log("Nach=" + localStorage.getItem("nach"));
+  if (fullpricecount > 0) {
+    console.log("ersteKlase=" + true);
+  }
+  console.log("Erste klasse Anzahl=" + fullpricecount);
+  console.log("Zweite klasse Anzahl=" + halfcount);
+  console.log("----------------------------------");
+});

@@ -1,0 +1,8 @@
+Todo 
+----------------------------------------------
+-   lang conversion 
+
+-   stop button 
+        with clearing all the data
+-   time out/loading screen
+

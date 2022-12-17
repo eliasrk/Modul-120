@@ -22,6 +22,38 @@ const villages = [
 
 setInterval(updateClock, 1000);
 
+getParams();
+//get parameters from url and set them to local storage
+function getParams() {
+  var url_string = window.location.href;
+  var url = new URL(url_string);
+  var von = url.searchParams.get("von");
+  var nach = url.searchParams.get("nach");
+  var direction = url.searchParams.get("direction");
+  console.log(von);
+  console.log(nach);
+  localStorage.setItem("von", von);
+  localStorage.setItem("nach", nach);
+  localStorage.setItem("direction", direction);
+
+  if (nach === null && von === null) {
+    createStops("locationLeft", "von");
+    reselectLocation("locationRight");
+  }
+  if (von) {
+    document.getElementById("von").innerHTML = von;
+    cleardiv();
+    reselectLocation("locationLeft");
+    reselectLocation("locationRight");
+  }
+  if (nach) {
+    document.getElementById("nach").innerHTML = nach;
+    cleardiv();
+    reselectLocation("locationLeft");
+    reselectLocation("locationRight");
+  }
+}
+
 function cleardiv() {
   document.getElementById("locationRight").innerHTML = "";
   document.getElementById("locationLeft").innerHTML = "";
@@ -57,10 +89,12 @@ function rotate() {
     reselectLocation("locationRight");
   }
 }
+1;
 
 // creating all the cities
 function createStops(currentSide, id) {
   for (var i = 0; i < villages.length; i++) {
+    document.getElementById("onewaybutton").innerHTML = " ";
     //create buttons for each city
 
     var location = document.getElementById(currentSide);
@@ -87,13 +121,17 @@ function createStops(currentSide, id) {
         cleardiv();
         reselectLocation("locationLeft");
         reselectLocation("locationRight");
+        var von = document.getElementById("von").innerText;
+        localStorage.setItem("von", von);
+        var nach = document.getElementById("nach").innerText;
+        console.log(nach);
+        localStorage.setItem("nach", nach);
+        console.log(localStorage.getItem("nach"));
         createOneWayTwoMulti();
-        console.log("	1");
       } else {
         cleardiv();
         createStops("locationRight", "nach");
         reselectLocation("locationLeft");
-        console.log("	2");
       }
     });
   }
@@ -112,19 +150,17 @@ function reselectLocation(currentSide) {
       cleardiv();
       createStops("locationRight", "nach");
       reselectLocation("locationLeft");
-      console.log("  3");
     } else {
       cleardiv();
       createStops("locationLeft", "von");
       reselectLocation("locationRight");
-      console.log("  4");
     }
   });
 }
 
 //create 3 buttons for one way return and multi
 function createOneWayTwoMulti() {
-  var value = ["oneWay", "return", "multi"];
+  var value = ["einseitig", "zurück", "mehrfach"];
   for (var i = 0; i < 3; i++) {
     let location = document.getElementById("onewaybutton");
     var oneWay = document.createElement("button");
@@ -132,17 +168,77 @@ function createOneWayTwoMulti() {
     oneWay.innerText = value[i];
     oneWay.id = "oneway";
     oneWay.value = i + 1;
+
     location.append(oneWay);
 
     oneWay.addEventListener("click", function () {
+      getTown();
+      1;
       var direction = this.value;
       localStorage.removeItem("direction");
-      localStorage.setItem("direction", direction);
-      localStorage.setItem("von", "1");
-      window.location.href = "basket.html";
+      1;
+      var change = true;
+      checkDifference();
+      if (change === true) {
+        window.location.href = "basket.html";
+      }
     });
   }
 }
 
-createStops("locationLeft", "von");
-reselectLocation("locationRight");
+//get the town from villages and determine the difference between the two
+function getTown() {
+  var von = document.getElementById("von").innerText;
+  var nach = document.getElementById("nach").innerText;
+
+  localStorage.setItem("von", von);
+  localStorage.setItem("nach", nach);
+  var vonIndex = villages.findIndex((x) => x.name === von);
+  var nachIndex = villages.findIndex((x) => x.name === nach);
+  var difference = Math.abs(nachIndex - vonIndex);
+  localStorage.setItem("difference", difference);
+}
+//function that checks that difference is not 0
+function checkDifference() {
+  var difference = localStorage.getItem("difference");
+  if (difference === 0) {
+    alert("Bitte wählen Sie zwei verschiedene Orte aus");
+    var change = false;
+  }
+}
+
+//check if the button with french is clicked and change the url parameter to french
+function french() {
+  var language = "fr";
+  localStorage.setItem("language", language);
+}
+//check if the button with id of lang is clicked and change the url parameter to whatever the inner text is
+
+var language = document.getElementById("English");
+console.log(language);
+language.addEventListener("click", function () {
+  localStorage.setItem("language", "En");
+  console.log("En");
+});
+
+var language = document.getElementById("German");
+console.log(language);
+language.addEventListener("click", function () {
+  localStorage.setItem("language", "De");
+  console.log("De");
+});
+
+var language = document.getElementById("French");
+console.log(language);
+language.addEventListener("click", function () {
+  localStorage.setItem("language", "Fr");
+  console.log("Fr");
+  console.log(23123);
+});
+
+document.getElementsByClassName("Stops");
+//event listener for the button with id of Stops
+document.getElementById("Stops").addEventListener("click", function () {
+  //change the url to index.html
+  window.location.href = "index.html";
+});
