@@ -53,6 +53,8 @@ function pricecalc() {
   }
   var price = 0.0;
   var price2 = 0.0;
+  var direction = localStorage.getItem("direction");
+  console.log(direction);
   price = 2.9 * fullpricecount * direction;
   if (price > 0) {
     price = price + difference;
@@ -65,12 +67,12 @@ function pricecalc() {
   }
   price2 = Math.round(price2 * 100) / 100;
   var price3 = price + price2;
-
   document.getElementById("fullTotal").innerText = price;
   document.getElementById("halfTotal").innerText = price2;
   document.getElementById("total").innerText = parseFloat(price3).toFixed(2);
 }
 
+pricecalc();
 document.getElementById("Purchase").addEventListener("click", function () {
   console.log("----------------------------------");
   console.log("Purchase");

@@ -35,6 +35,7 @@ function getParams() {
   localStorage.setItem("von", von);
   localStorage.setItem("nach", nach);
   localStorage.setItem("direction", direction);
+  console.log(localStorage.getItem("direction"));
 
   if (nach === null && von === null) {
     createStops("locationLeft", "von");
@@ -173,10 +174,8 @@ function createOneWayTwoMulti() {
 
     oneWay.addEventListener("click", function () {
       getTown();
-      1;
       var direction = this.value;
-      localStorage.removeItem("direction");
-      1;
+      localStorage.setItem("direction", direction);
       var change = true;
       checkDifference();
       if (change === true) {
@@ -234,11 +233,4 @@ language.addEventListener("click", function () {
   localStorage.setItem("language", "Fr");
   console.log("Fr");
   console.log(23123);
-});
-
-document.getElementsByClassName("Stops");
-//event listener for the button with id of Stops
-document.getElementById("Stops").addEventListener("click", function () {
-  //change the url to index.html
-  window.location.href = "index.html";
 });
