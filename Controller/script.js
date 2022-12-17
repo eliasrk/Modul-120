@@ -234,3 +234,24 @@ language.addEventListener("click", function () {
   console.log("Fr");
   console.log(23123);
 });
+
+const IDLE_TIME = 30;
+
+const screenSaver = document.getElementById("screen-saver");
+
+let timer;
+
+function startTimer() {
+  timer = setTimeout(function () {
+    screenSaver.style.display = "block";
+  }, IDLE_TIME * 1000);
+}
+function resetTimer() {
+  screenSaver.style.display = "none";
+  clearTimeout(timer);
+  startTimer();
+}
+
+startTimer();
+document.addEventListener("mousemove", resetTimer);
+document.addEventListener("keypress", resetTimer);
