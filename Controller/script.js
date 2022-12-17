@@ -131,7 +131,7 @@ function createOneWayTwoMulti() {
 
     oneWay.innerText = value[i];
     oneWay.id = "oneway";
-    oneWay.value = value[i];
+    oneWay.value = i + 1;
     location.append(oneWay);
 
     oneWay.addEventListener("click", function () {

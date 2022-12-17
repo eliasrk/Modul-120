@@ -174,8 +174,8 @@ h4 {
   box-shadow: var(--shadowActive);
 }
 
-#firstClass,
-#secondClass {
+#fullpriceClass,
+#halfClass {
   width: fit-content;
   padding: 25px;
   gap: 25px;
@@ -191,27 +191,26 @@ h4 {
   height: fit-content;
 }
 
-#firstClass button,
-#secondClass button {
+#fullpriceClass button,
+#halfClass button {
   height: fit-content;
   align-self: center;
 }
-
-#firstname,
-#secondname {
+#fullpricename,
+#halfname {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
 #price {
-  right: 5px;
+  right: 10px;
   bottom: 100px;
   position: absolute;
   padding: 25px;
   gap: 25px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   border-style: solid;
   border-color: black;
   border-width: 2px;
@@ -220,6 +219,7 @@ h4 {
   box-shadow: var(--mainShadow);
   padding: 25px;
   height: fit-content;
+  text-align: right;
 }
 
 #ticketamount {
@@ -254,4 +254,19 @@ h4 {
   color: #5b5b5b;
   background: var(--shadowbackground);
   box-shadow: var(--shadowActive);
+}
+.cost {
+  border-top-style: solid;
+  border-color: black;
+  border-width: 2px;
+}
+
+#totals {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  gap: 25px;
+  text-align: center;
+  align-content: center;
 }

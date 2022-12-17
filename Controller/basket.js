@@ -1,47 +1,61 @@
-localStorage.getItem("direction");
+var direction = localStorage.getItem("direction");
 localStorage.getItem("von");
-console.log(localStorage.getItem("direction"));
-console.log(localStorage.getItem("von"));
 
-var firstminus = document.getElementById("first-");
-var firstplus = document.getElementById("first+");
-var secondminus = document.getElementById("second-");
-var secondplus = document.getElementById("second+");
-var first = document.getElementById("first");
-var second = document.getElementById("second");
-var firstcount = 0;
-var secondcount = 0;
-firstminus.addEventListener("click", function () {
-  if (firstcount > 0) {
-    firstcount--;
-    first.innerText = "";
-    first.append(" : " + firstcount);
-    console.log(firstcount);
+var fullpriceminus = document.getElementById("fullprice-");
+var fullpriceplus = document.getElementById("fullprice+");
+var halfminus = document.getElementById("half-");
+var halfplus = document.getElementById("half+");
+var fullprice = document.getElementById("fullprice");
+var half = document.getElementById("half");
+var fullpricecount = 0;
+var halfcount = 0;
+fullpriceminus.addEventListener("click", function () {
+  if (fullpricecount > 0) {
+    fullpricecount--;
+    fullprice.innerText = "";
+    fullprice.append(" : " + fullpricecount);
+    console.log(fullpricecount);
+    pricecalc();
   }
 });
 
-firstplus.addEventListener("click", function () {
-  firstcount++;
-  first.innerText = "";
-  first.append(" : " + firstcount);
-  console.log(firstcount);
+fullpriceplus.addEventListener("click", function () {
+  fullpricecount++;
+  fullprice.innerText = "";
+  fullprice.append(" : " + fullpricecount);
+  console.log(fullpricecount);
+  pricecalc();
 });
 
-secondminus.addEventListener("click", function () {
-  if (secondcount > 0) {
-    secondcount--;
+halfminus.addEventListener("click", function () {
+  if (halfcount > 0) {
+    halfcount--;
 
-    second.innerText = "";
-    second.append(" : " + secondcount);
-    console.log(secondcount);
+    half.innerText = "";
+    half.append(" : " + halfcount);
+    console.log(halfcount);
+    pricecalc();
   }
 });
 
-secondplus.addEventListener("click", function () {
-  secondcount++;
-  second.innerText = "";
-  second.append(" : " + secondcount);
-  console.log(secondcount);
+halfplus.addEventListener("click", function () {
+  halfcount++;
+  half.innerText = "";
+  half.append(" : " + halfcount);
+  console.log(halfcount);
+  pricecalc();
 });
-
-function pricecalc() {}
+function pricecalc() {
+  console.log(fullpricecount);
+  var price = 0.0;
+  var price2 = 0.0;
+  price = 2.9 * fullpricecount * direction;
+  price2 = 2.9 * halfcount * direction;
+  var price3 = price + price2;
+  price = price.toFixed(2);
+  price2 = price2.toFixed(2);
+  document.getElementById("fullTotal").innerText = price;
+  document.getElementById("halfTotal").innerText = price2;
+  console.log("direction " + direction);
+  document.getElementById("total").innerText = price3.toFixed(2);
+}
